@@ -1,8 +1,6 @@
 const interpolate = (value, session = {}, options = {}) => {
-    //TODO
     const regex = new RegExp(`(?<=${options.leftDelimiter})(.*?)(?=${options.rightDelimiter})`, 'g');
     const variablesInString = value.match(regex);
-    console.log(variablesInString)
     let newStr = value;
 
     if (variablesInString != null){
@@ -14,7 +12,7 @@ const interpolate = (value, session = {}, options = {}) => {
     return newStr;
 };
 
-const result = interpolate('Hi {firstname, how are you today?', {firstname: 'Jonas'}, {leftDelimiter: '{', rightDelimiter: '}'});
+const result = interpolate('Hi {firstname}, how are you today Mr. {lastname}?', {firstname: 'Jonas', lastname: 'Rossou'}, {leftDelimiter: '{', rightDelimiter: '}'});
 console.log(result)
 
 module.exports = { interpolate }
